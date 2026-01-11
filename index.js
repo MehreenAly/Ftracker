@@ -5,6 +5,8 @@ const cors = require("cors");
 const app = express();
 
 app.use(express.json());
+
+// ✅ CORS — allow all (safe for now)
 app.use(cors());
 
 // routes
@@ -16,7 +18,6 @@ app.get("/", (req, res) => {
   res.send("Backend running");
 });
 
-// ❌ NO app.listen here
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
