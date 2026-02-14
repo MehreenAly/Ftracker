@@ -3,17 +3,16 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-const app = express();   // ✅ FIX HERE
+const app = express();
 
 app.use(express.json());
 
 app.use(cors({
-  origin: "*",
-  methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
+  origin: [
+    "https://ftracker-frontend.vercel.app"
+  ],
+  methods: ["GET", "POST", "DELETE", "PUT"],
 }));
-
-app.options("*", cors());
 
 const transactionRoutes = require("./routes/transactionroutes");
 app.use("/api/transactions", transactionRoutes);
@@ -24,6 +23,6 @@ app.get("/", (req, res) => {
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error("DB connection failed:", err));
+  .catch(err => console.error("DB connection failed:", err));
 
 module.exports = app;
