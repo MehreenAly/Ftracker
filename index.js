@@ -17,7 +17,7 @@ app.use(cors({
   allowedHeaders: ["Content-Type"]
 }));
 
-app.options("*", cors());
+
 
 const transactionRoutes = require("./routes/transactionroutes");
 app.use("/api/transactions", transactionRoutes);
