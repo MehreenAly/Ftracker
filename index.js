@@ -10,11 +10,12 @@ app.use(cors({
   origin: [
     "https://ftracker-frontend.vercel.app",
     "https://ftracker-frontend-git-main-ayeshas-projects-d815f7ff.vercel.app",
-    "https://ftracker-frontend-oopu2muo1-ayeshas-projects-d815f7ff.vercel.app" // added preview URL
+    "https://ftracker-frontend-oopu2muo1-ayeshas-projects-d815f7ff.vercel.app"
   ],
   methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
   allowedHeaders: ["Content-Type"]
 }));
+
 
 const transactionRoutes = require("./routes/transactionroutes");
 app.use("/api/transactions", transactionRoutes);
